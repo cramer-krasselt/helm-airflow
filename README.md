@@ -4,6 +4,11 @@ This repository is a fork of the original with a few tweaks.
 
 1. Remove `echo -e` from git clone/sync scripts & replace with `printf`
 2. Set G/U id for containers via `securityContext`
+3. `helm repo add momer-airflow 'https://raw.githubusercontent.com/momer/helm-airflow/master/'`
+4. `helm repo update`
+5. `helm search repo airflow`
+
+see https://github.com/kmzfs/helm-repo-in-github for additional info
 
 # Airflow / Celery
 
