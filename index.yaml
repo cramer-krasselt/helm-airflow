@@ -3,7 +3,7 @@ entries:
   airflow:
   - apiVersion: v1
     appVersion: 1.10.4
-    created: "2020-01-23T15:26:56.456601-06:00"
+    created: "2020-01-23T15:44:25.010828-06:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -15,7 +15,36 @@ entries:
       version: 7.0.0
     description: Airflow is a platform to programmatically author, schedule and monitor
       workflows
-    digest: 4964eab35ce9d08692fad5ba6818227132d731d52b480bd17db60cbfb15e1a47
+    digest: 3ad13c4b4cd5679a3b515313ca8d2ebb1b21636dc04721e6bfbe79040f558988
+    home: https://airflow.apache.org/
+    icon: https://airflow.apache.org/_images/pin_large.png
+    keywords:
+    - workflow
+    - dag
+    maintainers:
+    - email: gaetan@xeberon.net
+      name: gsemet
+    name: airflow
+    sources:
+    - https://airflow.apache.org/
+    urls:
+    - airflow-5.2.6.tgz
+    version: 5.2.6
+  - apiVersion: v1
+    appVersion: 1.10.4
+    created: "2020-01-23T15:44:25.000238-06:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 0.13.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 7.0.0
+    description: Airflow is a platform to programmatically author, schedule and monitor
+      workflows
+    digest: 628e1c3cc6379bb230c783b53c2357248877af9fa7e054e5d2f029aad530665b
     home: https://airflow.apache.org/
     icon: https://airflow.apache.org/_images/pin_large.png
     keywords:
@@ -32,7 +61,7 @@ entries:
     version: 5.2.5
   - apiVersion: v1
     appVersion: 1.10.5
-    created: "2020-01-23T15:26:56.449787-06:00"
+    created: "2020-01-23T15:44:24.990384-06:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -59,4 +88,4 @@ entries:
     urls:
     - airflow-5.2.4.tgz
     version: 5.2.4
-generated: "2020-01-23T15:26:56.442388-06:00"
+generated: "2020-01-23T15:44:24.980635-06:00"
