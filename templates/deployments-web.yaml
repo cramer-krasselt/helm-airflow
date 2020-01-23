@@ -50,8 +50,6 @@ spec:
         release: {{ .Release.Name }}
     spec:
       securityContext:
-        runAsUser: 472
-        runAsGroup: 472
         fsGroup: 472
   {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
@@ -88,6 +86,8 @@ spec:
             - "/dags"
             - "{{ .Values.dags.git.repoHost}}"
             - "{{ .Values.dags.git.privateKeyName }}"
+          securityContext:
+            runAsUser: 472
           volumeMounts:
             - name: git-clone
               mountPath: /usr/local/git
@@ -103,10 +103,7 @@ spec:
         - name: git-sync
           image: {{ .Values.dags.git.gitSync.image.repository }}:{{ .Values.dags.git.gitSync.image.tag }} # Any image with git will do
           imagePullPolicy: {{ .Values.dags.git.gitSync.image.pullPolicy }}
-          securityContext:
-            runAsUser: 472
-            runAsGroup: 472
-            fsGroup: 472
+
           envFrom:
           - configMapRef:
               name: "{{ template "airflow.fullname" . }}-env"
@@ -136,8 +133,6 @@ spec:
           imagePullPolicy: {{ .Values.airflow.image.pullPolicy}}
           securityContext:
             runAsUser: 472
-            runAsGroup: 472
-            fsGroup: 472
           ports:
             - name: web
               containerPort: 8080

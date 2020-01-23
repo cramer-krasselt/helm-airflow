@@ -39,8 +39,6 @@ spec:
         release: {{ .Release.Name }}
     spec:
       securityContext:
-        runAsUser: 472
-        runAsGroup: 472
         fsGroup: 472
       {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
@@ -61,6 +59,8 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}-flower
+          securityContext:
+            runAsUser: 472
           image: {{ .Values.airflow.image.repository }}:{{ .Values.airflow.image.tag }}
           imagePullPolicy: {{ .Values.airflow.image.pullPolicy }}
           envFrom:

@@ -52,8 +52,6 @@ spec:
         release: {{ .Release.Name }}
     spec:
       securityContext:
-        runAsUser: 472
-        runAsGroup: 472
         fsGroup: 472
   {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
@@ -91,6 +89,8 @@ spec:
             - "/dags"
             - "{{ .Values.dags.git.repoHost}}"
             - "{{ .Values.dags.git.privateKeyName }}"
+          securityContext:
+            runAsUser: 472
           volumeMounts:
             - name: git-clone
               mountPath: /usr/local/git
@@ -146,6 +146,8 @@ spec:
           {{- include "airflow.mapenvsecrets" . | indent 10 }}
           resources:
 {{ toYaml .Values.scheduler.resources | indent 12 }}
+          securityContext:
+            runAsUser: 472
           volumeMounts:
             - name: scripts
               mountPath: /usr/local/scripts
