@@ -55,7 +55,8 @@ spec:
         runAsUser: 472
         runAsGroup: 472
         fsGroup: 472
-      {{- if .Values.airflow.image.pullSecret }}
+        fsUser: 472
+  {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.airflow.image.pullSecret }}
       {{- end }}

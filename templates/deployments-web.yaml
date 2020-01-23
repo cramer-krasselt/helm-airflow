@@ -53,7 +53,8 @@ spec:
         runAsUser: 472
         runAsGroup: 472
         fsGroup: 472
-      {{- if .Values.airflow.image.pullSecret }}
+        fsUser: 472
+  {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.airflow.image.pullSecret }}
       {{- end }}
@@ -103,6 +104,11 @@ spec:
         - name: git-sync
           image: {{ .Values.dags.git.gitSync.image.repository }}:{{ .Values.dags.git.gitSync.image.tag }} # Any image with git will do
           imagePullPolicy: {{ .Values.dags.git.gitSync.image.pullPolicy }}
+          securityContext:
+            runAsUser: 472
+            runAsGroup: 472
+            fsGroup: 472
+            fsUser: 472
           envFrom:
           - configMapRef:
               name: "{{ template "airflow.fullname" . }}-env"
@@ -130,6 +136,11 @@ spec:
         - name: {{ .Chart.Name }}-web
           image: {{ .Values.airflow.image.repository }}:{{ .Values.airflow.image.tag }}
           imagePullPolicy: {{ .Values.airflow.image.pullPolicy}}
+          securityContext:
+            runAsUser: 472
+            runAsGroup: 472
+            fsGroup: 472
+            fsUser: 472
           ports:
             - name: web
               containerPort: 8080
