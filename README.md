@@ -1,14 +1,25 @@
-# NOTICE
+# Helm-Airflow
 
 This repository is a fork of the original with a few tweaks.
 
+## Primary changes
+
 1. Remove `echo -e` from git clone/sync scripts & replace with `printf`
-2. Set G/U id for containers via `securityContext`
+1. Set G/U id for containers via `securityContext`
+
+## Usage
+
+For more information on how to use Helm charts, check out [this tutorial][helm_chart_tutorial].
+For information about leveraging github for a helm repo, check out [helm_repo_github].
+
 3. `helm repo add momer-airflow 'https://raw.githubusercontent.com/momer/helm-airflow/master/'`
 4. `helm repo update`
 5. `helm search repo airflow`
 
-see https://github.com/kmzfs/helm-repo-in-github for additional info
+[helm_chart_tutorial]: https://docs.bitnami.com/tutorials/create-your-first-helm-chart/
+[helm_repo_github]: https://github.com/kmzfs/helm-repo-in-github
+
+# ORIGINAL DOCUMENTATION BELOW
 
 # Airflow / Celery
 
